@@ -3,7 +3,7 @@ import sys
 import feedparser
 from sql import db
 from time import sleep
-from pyrogram import Client
+from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -34,6 +34,18 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 app2 = None
 if str_session is not None and str_session != "":
     app2 = Client(str_session, api_id=api_id, api_hash=api_hash)
+
+
+@app.on_message(filters.command(["up"]))
+async def reply_up_bot(client, msg):
+    if msg.chat.id in [log_channel, mirr_chat]:
+        await msg.reply_text(f"Up Bro")
+
+if app2 is not None:
+    @app2.on_message(filters.command(["up"]))
+    async def reply_up_ub(client, msg):
+        if msg.chat.id in [log_channel, mirr_chat]:
+            await msg.reply_text(f"Up Bro")
 
 def create_feed_checker(feed_url):
     def check_feed():
