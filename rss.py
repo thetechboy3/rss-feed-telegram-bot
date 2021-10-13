@@ -49,7 +49,6 @@ def create_feed_checker(feed_url):
 
             # Have reached the end of new entries
             if entry.id == last_id_from_db:
-                db.update_link(feed_url, first_entry.id)
                 # No new entry
                 if entry_num == 0:
                     print(f"Checked feed for {feed_url}: {entry.id}")
@@ -62,12 +61,13 @@ def create_feed_checker(feed_url):
                 if app2 is not None:
                     mirr_msg = f"{mirr_cmd} {entry.link}"
                     app2.send_message(mirr_chat, mirr_msg)
-                db.update_link(feed_url, entry.id)
             except FloodWait as e:
                 print(f"FloodWait: {e.x} seconds")
                 sleep(e.x)
             except Exception as e:
                 print(e)
+
+        db.update_link(feed_url, first_entry.id)
 
     return check_feed
 
