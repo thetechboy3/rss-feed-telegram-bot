@@ -52,10 +52,34 @@ def create_feed_checker(feed_url):
         FEED = feedparser.parse(feed_url)
 
         if len(FEED.entries) == 0:
+            print(f"RSS Feed at {feed_url} returned no entries")
+            try:
+                app.send_message(log_channel, f"RSS Feed at {feed_url} returned no entries")
+            except FloodWait as e:
+                print(f"FloodWait: {e.x} seconds")
+                sleep(e.x)
+            except Exception as e:
+                print(e)
+
             return
 
         first_entry = FEED.entries[0]
         last_id_from_db = db.get_link(feed_url).link
+
+        if last_id_from_db == "*":
+            message = f"**{first_entry.title}**\n```{first_entry.link}```"
+            try:
+                app.send_message(log_channel, message)
+                if app2 is not None:
+                    mirr_msg = f"{mirr_cmd} {first_entry.link}"
+                    app2.send_message(mirr_chat, mirr_msg)
+            except FloodWait as e:
+                print(f"FloodWait: {e.x} seconds")
+                sleep(e.x)
+            except Exception as e:
+                print(e)
+            db.update_link(feed_url, first_entry.id)
+            return
 
         for entry_num, entry in enumerate(FEED.entries):
 
