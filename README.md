@@ -31,7 +31,7 @@ python gen_str.py
 ## Deployment
 
 ### Deploying on Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/thetechboy3/rss-feed-telegram-bot)
 
 ### VPS or any other server/pc
 
