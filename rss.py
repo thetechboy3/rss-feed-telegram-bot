@@ -67,11 +67,11 @@ def create_feed_checker(feed_url):
         last_id_from_db = db.get_link(feed_url).link
 
         if last_id_from_db == "*":
-            message = f"**{first_entry.title}**\n```{first_entry.link}```"
+            message = f"**{first_entry.title}**\n```{first_entry.links[1].href}```"
             try:
                 app.send_message(log_channel, message)
                 if app2 is not None:
-                    mirr_msg = f"{mirr_cmd} {first_entry.link}"
+                    mirr_msg = f"{mirr_cmd} {first_entry.links[1].href}"
                     app2.send_message(mirr_chat, mirr_msg)
             except FloodWait as e:
                 print(f"FloodWait: {e.x} seconds")
