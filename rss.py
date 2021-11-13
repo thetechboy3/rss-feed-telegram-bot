@@ -53,15 +53,6 @@ def create_feed_checker(feed_url):
 
         if len(FEED.entries) == 0:
             return
-            try:
-                app.send_message(log_channel, f"RSS Feed at {feed_url} returned no entries")
-            except FloodWait as e:
-                print(f"FloodWait: {e.x} seconds")
-                sleep(e.x)
-            except Exception as e:
-                print(e)
-
-            return
 
         first_entry = FEED.entries[0]
         last_id_from_db = db.get_link(feed_url).link
