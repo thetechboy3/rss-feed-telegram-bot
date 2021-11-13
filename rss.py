@@ -52,7 +52,7 @@ def create_feed_checker(feed_url):
         FEED = feedparser.parse(feed_url)
 
         if len(FEED.entries) == 0:
-            print(f"RSS Feed at {feed_url} returned no entries")
+            return
             try:
                 app.send_message(log_channel, f"RSS Feed at {feed_url} returned no entries")
             except FloodWait as e:
