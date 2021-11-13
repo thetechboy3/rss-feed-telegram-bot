@@ -1,6 +1,6 @@
 pyrogram
 feedparser
-apscheduler
+apscheduler==3.8.0
 psycopg2-binary
 sqlalchemy==1.3.23
 python-dotenv
