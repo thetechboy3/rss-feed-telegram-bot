@@ -83,19 +83,19 @@ def create_feed_checker(feed_url):
 
             # ↓ Edit this message as your needs.
             if "eztv.re" in entry.link:   
-                message = f"{entry.title}\n{entry.link}"
+                message = f"{first_entry.title}\n{first_entry.torrent_magneturi}"
             elif "yts.mx" in entry.link:
-                message = f"{entry.title}\n{entry.links[1]['href']}"
+                message = f"{first_entry.title}\n{first_entry.links[1]['href']}"
             elif "torlock" in entry.link:
-                message = f"{entry.title}\n{entry.links[1]['href']}"
+                message = f"{first_entry.title}\n{first_entry.links[1]['href']}"
             elif "watercache" in entry.link:
-                message = f"{entry.title}\n{entry.link}"
+                message = f"{first_entry.title}\n{first_entry.link}"
             elif "limetorrents.pro" in entry.link:
-                message = f"{entry.title}\n{entry.link}"
+                message = f"{first_entry.title}\n{first_entry.link}"
             elif "etorrent.click" in entry.link:
-                message = f"{entry.title}\n{entry.link}"
+                message = f"{first_entry.title}\n{first_entry.link}"
             else:
-                message = f"{entry.title}\n{entry.link}"
+                message = f"{first_entry.title}\n{entry.link}"
             try:
                 app.send_message(log_channel, message)
                 if app2 is not None:
