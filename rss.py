@@ -58,20 +58,7 @@ def create_feed_checker(feed_url):
         last_id_from_db = db.get_link(feed_url).link
 
         if last_id_from_db == "*":
-            if "eztv.re" in entry.link:   
-                message = f"{entry.title}\n{entry.torrent_magneturi}
-            elif "yts.mx" in entry.link:
-                message = f"{entry.title}\n{entry.links[1]['href']}
-            elif "rarbg" in entry.link:
-                message = f"{entry.title}\n{entry.link}
-            elif "watercache" in entry.link:
-                message = f"{entry.title}\n{entry.link}
-            elif "limetorrents.pro" in entry.link:
-                message = f"{entry.title}\n{entry.link}
-            elif "etorrent.click" in entry.link:
-                message = f"{entry.title}\n{entry.link}
-            else:
-                message = f"{entry.title}\n{entry.link}
+            message = f"**{first_entry.title}**\n```{first_entry.links[1].href}```"
             try:
                 app.send_message(log_channel, message)
                 if app2 is not None:
@@ -95,7 +82,20 @@ def create_feed_checker(feed_url):
                 break
 
             # ↓ Edit this message as your needs.
-            message = f"**{entry.title}**\n```{entry.links[1].href}```"
+            if "eztv.re" in entry.link:   
+                message = f"{entry.title}\n{entry.torrent_magneturi}
+            elif "yts.mx" in entry.link:
+                message = f"{entry.title}\n{entry.links[1]['href']}
+            elif "rarbg" in entry.link:
+                message = f"{entry.title}\n{entry.link}
+            elif "torlock" in entry.link:
+                message = f"{entry.title}\n{entry.links[1]['href']}
+            elif "limetorrents.pro" in entry.link:
+                message = f"{entry.title}\n{entry.link}
+            elif "etorrent.click" in entry.link:
+                message = f"{entry.title}\n{entry.link}
+            else:
+                message = f"{entry.title}\n{entry.link}
             try:
                 app.send_message(log_channel, message)
                 if app2 is not None:
