@@ -83,7 +83,7 @@ def create_feed_checker(feed_url):
 
             # ↓ Edit this message as your needs.
             if "eztv.re" in entry.link:   
-                message = f"{first_entry.title}\n{first_entry.torrent_magneturi}
+                message = f"{first_entry.title}\n{first_entry.links[1]['href']}
             elif "yts.mx" in entry.link:
                 message = f"{first_entry.title}\n{first_entry.links[1]['href']}
             elif "rarbg" in entry.link:
