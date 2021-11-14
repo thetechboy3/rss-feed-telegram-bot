@@ -98,10 +98,10 @@ def create_feed_checker(feed_url):
                 message = f"{entry.title}\n{entry.link}"
             try:
                 app.send_message(log_channel, message)
-             if "torlock" in entry.link:                  
-                 mirr_msg = f"{mirr_cmd} {entry.links[1]['href']}"
-            else:   
+             if "watercache" in entry.link:                  
                  mirr_msg = f"{mirr_cmd} {entry.link}"
+            else:   
+                 mirr_msg = f"{mirr_cmd} {entry.links[1]['href']}"
              try:
                  app2.send_message(mirr_chat, mirr_msg)
             except FloodWait as e:
