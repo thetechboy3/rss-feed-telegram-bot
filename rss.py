@@ -82,7 +82,7 @@ def create_feed_checker(feed_url):
                 break
 
             # ↓ Edit this message as your needs.
-            message = f"**{mirr_cmd}**\n```{entry.links[1]['href']}```"
+            message = f"{mirr_cmd} {entry.links[1]['href']}"
             try:
                 app.send_message(log_channel, message)
                 if app2 is not None:
