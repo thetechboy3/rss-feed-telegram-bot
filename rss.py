@@ -100,6 +100,8 @@ def create_feed_checker(feed_url):
                 app.send_message(log_channel, message)
                 if app2 is not None:   
                     mirr_msg = f"{mirr_cmd} {entry.links[1]['href']}"
+                elif "torlock.com" in entry.link:   
+                    mirr_msg = f"{mirr_cmd} {entry.links[1]['href']}"
                     app2.send_message(mirr_chat, mirr_msg)
             except FloodWait as e:
                 print(f"FloodWait: {e.x} seconds")
