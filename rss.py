@@ -95,7 +95,7 @@ def create_feed_checker(feed_url):
             elif "etorrent.click" in entry.link:
                 message = f"{first_entry.title}\n{first_entry.link}"
             else:
-                message = f"{first_entry.title}\n{entry.link}"
+                message = f"{first_entry.title}\n{first_entry.link}"
             try:
                 app.send_message(log_channel, message)
                 if app2 is not None:
