@@ -99,7 +99,20 @@ def create_feed_checker(feed_url):
             try:
                 app.send_message(log_channel, message)
                 if app2 is not None:
-                    mirr_msg = f"{mirr_cmd} {entry.link}"
+if "eztv.re" in entry.link:   
+                mirr_msg = f"{mirr_cmd}\n{first_entry.links[1]['href']}"
+            elif "yts.mx" in entry.link:
+                mirr_msg = f"{mirr_cmd}\n{first_entry.links[1]['href']}"
+            elif "torlock.com" in entry.link:
+                mirr_msg = f"{mirr_cmd}\n{first_entry.links[1]['href']}"
+            elif "watercache" in entry.link:
+                mirr_msg = f"{mirr_cmd}\n{first_entry.link}"
+            elif "limetorrents.pro" in entry.link:
+                mirr_msg = f"{mirr_cmd}\n{first_entry.link}"
+            elif "etorrent.click" in entry.link:
+                mirr_msg = f"{mirr_cmd}\n{first_entry.link}"
+            else:
+                    mirr_msg = f"{mirr_cmd} {first_entry.link}"
                     app2.send_message(mirr_chat, mirr_msg)
             except FloodWait as e:
                 print(f"FloodWait: {e.x} seconds")
