@@ -83,7 +83,7 @@ def create_feed_checker(feed_url):
 
             # ↓ Edit this message as your needs.
 if "torlock" in entry.link:
-                message = f"{mirr_cmd} {entry.links[1]['href']}
+                message = f"{mirr_cmd} {entry.links[1]['href']}"
 else:
             message = f"{mirr_cmd} {entry.link}"
             try:
