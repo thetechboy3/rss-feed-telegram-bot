@@ -98,9 +98,7 @@ def create_feed_checker(feed_url):
                 message = f"{entry.title}\n{entry.link}"
             try:
                 app.send_message(log_channel, message)
-                if app2 is not None:  
-                # test
-                elif "torlock" in entry.link:                  
+                if "torlock" in entry.link:                  
                     mirr_msg = f"{mirr_cmd} {entry.links[1]['href']}"
                 else:   
                     mirr_msg = f"{mirr_cmd} {entry.link}"
